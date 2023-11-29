@@ -1,0 +1,26 @@
+<Window.Resources>
+<local:ColorConverter x:Key="ColorConverter"/>
+<Style TargetType="{x:Type DataGridRow}">
+<Setter Property="Background" Value="{Binding nowSale, Converter={StaticResource ColorConverter}}" />
+</Style>
+<Style TargetType="DataGrid">
+</Style>
+</Window.Resources>
+
+namespace..
+{
+class ColorConverter : IValueConverter
+{
+public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+{
+return (int)value < 15?
+new SolidColorBrush(Colors.LightGreen)
+: new SolidColorBrush(Colors.Transparent);
+}
+public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+{
+throw new Exception("The method or operation is not implemented.");
+}
+}
+
+public partial class Products : Window..
